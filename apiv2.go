@@ -95,7 +95,7 @@ func translate(text, from, to string, withVerification bool, tries int, delay ti
 		
 		tries--
 		
-		log.Printf("response status: %s, sleep for %f seconds", r.Status, delay.Seconds())
+		log.Printf("[ERROR], response status: %s, sleep for %d seconds", r.Status, int(delay.Seconds()))
 		time.Sleep(delay)
 	}
 
