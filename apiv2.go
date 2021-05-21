@@ -92,11 +92,11 @@ func translate(text, from, to string, withVerification bool, tries int, delay ti
 		if r.StatusCode == http.StatusOK {
 			break
 		}
-
-		if r.StatusCode == http.StatusForbidden {
-			tries--
-			time.Sleep(delay)
-		}
+		
+		tries--
+		
+		log.Printf("response status: %s, sleep for %f seconds", r.Status, delay.Seconds())
+		time.Sleep(delay)
 	}
 
 	raw, err := ioutil.ReadAll(r.Body)
